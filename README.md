@@ -77,6 +77,21 @@ A API está documentada no **Swagger** e pode ser acessada após iniciar a aplic
 🔗 **[Swagger UI](http://localhost:8080/swagger-ui/index.html)**
 
 ---
+## 📌 **Endpoints Disponíveis**
+
+### **Usuários**
+| Método | Endpoint          | Descrição                     |
+|--------|------------------|------------------------------|
+| `POST` | `/api/users`      | Cria um novo usuário         |
+| `PUT` | `/api/users`      | Altera um  usuário         |
+| `GET`  | `/api/users/{id}` | Obtém um usuário pelo ID     |
+| `GET`  | `/api/users`      | Lista todos os usuários      |
+
+### **Transações**
+| Método | Endpoint                 | Descrição                              |
+|--------|--------------------------|----------------------------------------|
+| `POST` | `/api/transactions`       | Realiza uma conversão de moeda        |
+| `GET`  | `/api/transactions/{userId}` | Lista transações de um usuário |
 
 
 
