@@ -14,7 +14,7 @@ class SwaggerConfig {
                 Info()
                     .title("Currency Converter API")
                     .version("1.0")
-                    .description("API para conversão de moedas e gerenciamento de usuários.")
+                    .description("Currency conversion and user management API")
             )
     }
 }

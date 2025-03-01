@@ -6,6 +6,8 @@ import com.adailton.currencyconverter.exception.ResourceNotFoundException
 import com.adailton.currencyconverter.model.Transaction
 import com.adailton.currencyconverter.repository.TransactionRepository
 import com.adailton.currencyconverter.repository.UserRepository
+import org.slf4j.Logger
+import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Service
 import java.math.RoundingMode
 import java.time.LocalDateTime
@@ -16,8 +18,11 @@ class TransactionService(
     private val exchangeRateService: ExchangeRateService,
     private val userRepository: UserRepository
 ) {
+    private val logger: Logger = LoggerFactory.getLogger(TransactionService::class.java)
 
     fun createTransaction(request: TransactionRequest): TransactionResponse {
+        logger.info("Creating a new transaction with request: $request")
+
         val user = userRepository.findById(request.userId)
             .orElseThrow { ResourceNotFoundException("User with ID ${request.userId} not found.") }
 
@@ -41,6 +46,7 @@ class TransactionService(
     }
 
     fun getTransactionsByUser(userId: Long): List<TransactionResponse> {
+        logger.info("Retrieving transactions for user ID: $userId")
         return transactionRepository.findByUserIdOrderByTimestampDesc(userId).map { toTransactionResponse(it) }
     }
 
