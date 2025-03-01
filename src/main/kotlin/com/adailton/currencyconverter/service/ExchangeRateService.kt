@@ -1,20 +1,24 @@
 package com.adailton.currencyconverter.service
 
+import org.springframework.beans.factory.annotation.Value
 import org.springframework.stereotype.Service
 import org.springframework.web.reactive.function.client.WebClient
 import java.math.BigDecimal
 import java.math.RoundingMode
 
 @Service
-class ExchangeRateService {
-    private val apiUrl = "http://api.exchangeratesapi.io/latest?access_key=4e6796bab9e47f8b6ef69a1231293eee&format=1?base=EUR"
-
+class ExchangeRateService (
+    @Value("\${exchange.api.url}") private val apiUrl: String
+){
     private val webClient: WebClient = WebClient.builder()
         .baseUrl(apiUrl)
         .build()
 
-    fun getExchangeRate(fromCurrency: String, toCurrency: String): BigDecimal {
+    fun getExchangeRate(fromCurrency: String, toCurrency: String, accessKey: String): BigDecimal {
+        val urlWithParams = "$apiUrl?access_key=$accessKey&format=1"
+
         val exchangeData: ExchangeRateResponse = webClient.get()
+            .uri(urlWithParams)
             .retrieve()
             .bodyToMono(ExchangeRateResponse::class.java)
             .block() ?: throw RuntimeException("Failed to fetch exchange rates")

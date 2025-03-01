@@ -21,7 +21,7 @@ class TransactionService(
         val user = userRepository.findById(request.userId)
             .orElseThrow { ResourceNotFoundException("User with ID ${request.userId} not found.") }
 
-        val rate = exchangeRateService.getExchangeRate(request.fromCurrency, request.toCurrency)
+        val rate = exchangeRateService.getExchangeRate(request.fromCurrency, request.toCurrency, request.accessKey)
 
         val toAmount = request.fromAmount.multiply(rate).setScale(2, RoundingMode.HALF_UP)
 

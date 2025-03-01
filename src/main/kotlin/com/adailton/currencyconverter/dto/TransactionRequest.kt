@@ -26,5 +26,9 @@ data class TransactionRequest(
     @field:NotBlank(message = "To currency is required")
     @field:Size(min = 3, max = 3, message = "To currency must be 3 characters")
     @field:Schema(description = "Currency code to convert to (e.g., USD)", example = "USD")
-    val toCurrency: String
+    val toCurrency: String,
+
+    @field:NotBlank(message = "API access key is required")
+    @Schema(description = "User's access key for the currency API", example = "your_api_key_here")
+    val accessKey: String
 )

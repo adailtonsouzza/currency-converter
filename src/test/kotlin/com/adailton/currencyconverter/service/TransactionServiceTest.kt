@@ -24,14 +24,14 @@ class TransactionServiceTest {
 
     @Test
     fun `should create a transaction successfully`() {
-
+        val accessKey = "test"
         val userId = 1L
         val conversionRate = BigDecimal("0.169893")
-        val request = TransactionRequest(userId, "BRL", BigDecimal("100.00"), "USD")
+        val request = TransactionRequest(userId, "BRL", BigDecimal("100.00"), "USD", accessKey)
 
         whenever(userRepository.findById(userId)).thenReturn(Optional.of(mock()))
 
-        whenever(exchangeRateService.getExchangeRate("BRL", "USD")).thenReturn(conversionRate)
+        whenever(exchangeRateService.getExchangeRate("BRL", "USD", accessKey)).thenReturn(conversionRate)
 
         val expectedTransaction = Transaction(
             id = 1L,
@@ -56,9 +56,8 @@ class TransactionServiceTest {
 
     @Test
     fun `should throw error if user does not exist`() {
-
         val userId = 999L
-        val request = TransactionRequest(userId, "BRL", BigDecimal("100.00"), "USD")
+        val request = TransactionRequest(userId, "BRL", BigDecimal("100.00"), "USD", "test")
 
         whenever(userRepository.findById(userId)).thenReturn(Optional.empty())
 

@@ -42,7 +42,8 @@ class TransactionControllerTest {
             "userId" to userId,
             "fromCurrency" to "BRL",
             "fromAmount" to BigDecimal("100.00"),
-            "toCurrency" to "USD"
+            "toCurrency" to "USD",
+            "accessKey" to "4e6796bab9e47f8b6ef69a1231293eee"
         )
 
 
@@ -77,7 +78,8 @@ class TransactionControllerTest {
             "userId" to userId,
             "fromCurrency" to "XXX",
             "fromAmount" to BigDecimal("100.00"),
-            "toCurrency" to "USD"
+            "toCurrency" to "USD",
+            "accessKey" to "4e6796bab9e47f8b6ef69a1231293eee"
         )
 
 
@@ -109,7 +111,8 @@ class TransactionControllerTest {
             "userId" to userId,
             "fromCurrency" to "BRL",
             "fromAmount" to BigDecimal("100.00"),
-            "toCurrency" to "USD"
+            "toCurrency" to "USD",
+            "accessKey" to "4e6796bab9e47f8b6ef69a1231293eee"
         )
 
         mockMvc.perform(
