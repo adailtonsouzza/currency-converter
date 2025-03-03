@@ -1,5 +1,6 @@
 package com.adailton.currencyconverter.service
 
+import com.adailton.currencyconverter.dto.ExchangeRateResponse
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Value
@@ -9,9 +10,9 @@ import java.math.BigDecimal
 import java.math.RoundingMode
 
 @Service
-class ExchangeRateService (
+class ExchangeRateService(
     @Value("\${exchange.api.url}") private val apiUrl: String
-){
+) {
 
     private val logger: Logger = LoggerFactory.getLogger(TransactionService::class.java)
 
@@ -37,10 +38,7 @@ class ExchangeRateService (
             ?.let { BigDecimal.valueOf(it) }
             ?: throw IllegalArgumentException("Invalid toCurrency: $toCurrency")
 
-        return toRate.divide(fromRate, 6,  RoundingMode.HALF_UP)
+        return toRate.divide(fromRate, 6, RoundingMode.HALF_UP)
     }
 }
 
-data class ExchangeRateResponse(
-    val rates: Map<String, Double>
-)

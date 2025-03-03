@@ -47,7 +47,14 @@ class TransactionService(
 
     fun getTransactionsByUser(userId: Long): List<TransactionResponse> {
         logger.info("Retrieving transactions for user ID: $userId")
-        return transactionRepository.findByUserIdOrderByTimestampDesc(userId).map { toTransactionResponse(it) }
+        val transactions = transactionRepository.findByUserIdOrderByTimestampDesc(userId)
+
+        if (transactions.isEmpty()) {
+            logger.warn("No transactions found for user ID: $userId")
+            throw ResourceNotFoundException("No transactions found for user ID: $userId")
+        }
+
+        return transactions.map { toTransactionResponse(it) }
     }
 
     private fun toTransactionResponse(transaction: Transaction): TransactionResponse {
