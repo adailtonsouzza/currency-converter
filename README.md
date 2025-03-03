@@ -78,13 +78,17 @@ cd currency-converter
 mvn spring-boot:run
 ```
 
-### **4️⃣ Criar um Usuário Antes de Fazer Conversões**
+### **4️⃣ Criar um Usuário e gerar a Access Key Antes de Fazer Conversões**
 Antes de realizar qualquer transação, é **necessário criar um usuário**, pois as transações são registradas no banco associadas a um usuário.
 
 
 #### **Criar usuário via Swagger**
 1. Acesse **[Swagger UI](http://localhost:8080/swagger-ui/index.html)** após iniciar a aplicação.
 2. Vá até o endpoint **POST `/api/users`** e crie um usuário.
+
+#### **Gerar Access Key**
+1. Acesse  **[exchangeratesapi](https://manage.exchangeratesapi.io/)**
+2. Criar conta ou entrar, e só copiar a key. 
 
 ### **5️⃣ Acessar a Documentação Swagger**
 A API está documentada no **Swagger** e pode ser acessada após iniciar a aplicação:
