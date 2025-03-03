@@ -55,8 +55,8 @@ Caso você não queira instalar Java/Maven, pode rodar a aplicação diretamente
 
 **Baixar e rodar a aplicação via Docker**
 ```sh
-docker pull adailtonsouzza/currency-converter:1.0
-docker run -p 8080:8080 adailtonsouzza/currency-converter:1.0
+docker pull adailtonsouzza/currency-converter:1.1
+docker run -p 8080:8080 adailtonsouzza/currency-converter:1.1
 ```
 Após rodar, a API estará disponível em http://localhost:8080.
 
