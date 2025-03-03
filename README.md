@@ -48,6 +48,21 @@ src/
 ---
 
 ## ▶️ **Como Rodar a Aplicação**
+
+### **Opção 1**
+### **Rodando via Docker 🐳**
+Caso você não queira instalar Java/Maven, pode rodar a aplicação diretamente via Docker.
+
+**Baixar e rodar a aplicação via Docker**
+```sh
+docker pull adailtonsouzza/currency-converter:1.0
+docker run -p 8080:8080 adailtonsouzza/currency-converter:1.0
+```
+Após rodar, a API estará disponível em http://localhost:8080.
+
+**OBS: Seguir os passos da opção 2, a partir do passo 4**
+
+### **Opção 2**
 ### **1️⃣ Pré-requisitos**
 - ✅ **Java 17+** instalado (**necessário para rodar o Spring Boot e Maven**).
 - ✅ **Maven** instalado (**gerenciador de dependências do projeto**).
