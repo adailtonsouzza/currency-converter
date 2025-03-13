@@ -1,7 +1,7 @@
 package com.adailton.currencyconverter.controller
 
-import com.adailton.currencyconverter.dto.UserRequest
-import com.adailton.currencyconverter.dto.UserResponse
+import com.adailton.currencyconverter.request.UserRequest
+import com.adailton.currencyconverter.response.UserResponse
 import com.adailton.currencyconverter.service.UserService
 import io.swagger.v3.oas.annotations.Operation
 import io.swagger.v3.oas.annotations.responses.ApiResponse

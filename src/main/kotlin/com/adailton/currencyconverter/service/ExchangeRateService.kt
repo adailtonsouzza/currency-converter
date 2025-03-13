@@ -1,6 +1,6 @@
 package com.adailton.currencyconverter.service
 
-import com.adailton.currencyconverter.dto.ExchangeRateResponse
+import com.adailton.currencyconverter.response.ExchangeRateResponse
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Value

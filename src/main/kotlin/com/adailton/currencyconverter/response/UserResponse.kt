@@ -1,4 +1,4 @@
-package com.adailton.currencyconverter.dto
+package com.adailton.currencyconverter.response
 
 import io.swagger.v3.oas.annotations.media.Schema
 

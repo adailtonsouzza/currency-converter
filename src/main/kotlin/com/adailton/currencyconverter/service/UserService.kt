@@ -1,7 +1,7 @@
 package com.adailton.currencyconverter.service
 
-import com.adailton.currencyconverter.dto.UserRequest
-import com.adailton.currencyconverter.dto.UserResponse
+import com.adailton.currencyconverter.request.UserRequest
+import com.adailton.currencyconverter.response.UserResponse
 import com.adailton.currencyconverter.exception.ResourceNotFoundException
 import com.adailton.currencyconverter.model.User
 import com.adailton.currencyconverter.repository.UserRepository

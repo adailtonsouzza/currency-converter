@@ -1,7 +1,7 @@
 package com.adailton.currencyconverter.service
 
-import com.adailton.currencyconverter.dto.TransactionRequest
-import com.adailton.currencyconverter.dto.TransactionResponse
+import com.adailton.currencyconverter.request.TransactionRequest
+import com.adailton.currencyconverter.response.TransactionResponse
 import com.adailton.currencyconverter.exception.ResourceNotFoundException
 import com.adailton.currencyconverter.model.Transaction
 import com.adailton.currencyconverter.repository.TransactionRepository
