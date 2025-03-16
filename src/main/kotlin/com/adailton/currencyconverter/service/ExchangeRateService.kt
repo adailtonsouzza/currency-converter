@@ -30,13 +30,13 @@ class ExchangeRateService(
             .bodyToMono(ExchangeRateResponse::class.java)
             .block() ?: throw RuntimeException("Failed to fetch exchange rates")
 
-        val fromRate = exchangeData.rates[fromCurrency]
-            ?.let { BigDecimal.valueOf(it) }
-            ?: throw IllegalArgumentException("Invalid fromCurrency: $fromCurrency")
+        val fromRate = BigDecimal.valueOf(
+            exchangeData.rates[fromCurrency] ?: throw IllegalArgumentException("Invalid fromCurrency: $fromCurrency")
+        )
 
-        val toRate = exchangeData.rates[toCurrency]
-            ?.let { BigDecimal.valueOf(it) }
-            ?: throw IllegalArgumentException("Invalid toCurrency: $toCurrency")
+        val toRate = BigDecimal.valueOf(
+            exchangeData.rates[toCurrency] ?: throw IllegalArgumentException("Invalid toCurrency: $toCurrency")
+        )
 
         return toRate.divide(fromRate, 6, RoundingMode.HALF_UP)
     }
