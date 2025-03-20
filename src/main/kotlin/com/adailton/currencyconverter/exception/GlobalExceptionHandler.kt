@@ -1,5 +1,7 @@
 package com.adailton.currencyconverter.exception
 
+import org.slf4j.Logger
+import org.slf4j.LoggerFactory
 import org.springframework.dao.DataIntegrityViolationException
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
@@ -9,9 +11,11 @@ import org.springframework.web.bind.annotation.RestControllerAdvice
 
 @RestControllerAdvice
 class GlobalExceptionHandler {
+    private val logger: Logger = LoggerFactory.getLogger(GlobalExceptionHandler::class.java)
 
     @ExceptionHandler(ResourceNotFoundException::class)
     fun handleResourceNotFoundException(ex: ResourceNotFoundException): ResponseEntity<ErrorResponse> {
+        logger.error("Resource not found: ${ex.message}")
         val errorResponse = ErrorResponse(
             status = HttpStatus.NOT_FOUND.value(),
             message = ex.message
@@ -24,6 +28,7 @@ class GlobalExceptionHandler {
         val errors = ex.bindingResult.fieldErrors.map {
             FieldError(it.field, it.defaultMessage ?: "Validation error")
         }
+        logger.warn("Validation error: ${errors.joinToString { "${it.field} - ${it.message}" }}")
         val errorResponse = ErrorResponse(
             status = HttpStatus.BAD_REQUEST.value(),
             message = "Invalid data",
@@ -43,6 +48,7 @@ class GlobalExceptionHandler {
 
     @ExceptionHandler(InvalidCurrencyException::class)
     fun handleInvalidCurrencyException(ex: InvalidCurrencyException): ResponseEntity<ErrorResponse> {
+        logger.error("Unexpected error occurred: ${ex.message}", ex)
         val errorResponse = ErrorResponse(
             status = HttpStatus.BAD_REQUEST.value(),
             message = ex.message

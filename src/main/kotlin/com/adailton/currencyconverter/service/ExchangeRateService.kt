@@ -38,6 +38,7 @@ class ExchangeRateService(
             exchangeData.rates[toCurrency] ?: throw IllegalArgumentException("Invalid toCurrency: $toCurrency")
         )
 
+        logger.info("Exchange rate for $fromCurrency → $toCurrency: $toRate / $fromRate")
         return toRate.divide(fromRate, 6, RoundingMode.HALF_UP)
     }
 }
